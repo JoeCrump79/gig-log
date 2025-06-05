@@ -1,0 +1,18 @@
+{
+  "shows": [
+    {
+      "id": 1,
+      "artist": "Radiohead",
+      "venue": "Toyota Center",
+      "date": "2022-06-01",
+      "description": "Best concert ever"
+    },
+    {
+      "id": 2,
+      "artist": "Phoebe Bridgers",
+      "venue": "White Oak Music Hall",
+      "date": "2023-04-19",
+      "description": "Emotional and amazing"
+    }
+  ]
+}
