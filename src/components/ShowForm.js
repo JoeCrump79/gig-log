@@ -1,88 +1,68 @@
 import React, { useState } from "react";
 
+const initialFormState = {
+  artist: "",
+  venue: "",
+  date: "",
+  description: "",
+};
+
 function ShowForm({ onAddShow }) {
-  const [formData, setFormData] = useState({
-    artist: "",
-    venue: "",
-    date: "",
-    description: ""
-  });
+  const [formData, setFormData] = useState(initialFormState);
 
   function handleChange(e) {
     const { name, value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value
-    }));
+    setFormData({ ...formData, [name]: value });
   }
 
   function handleSubmit(e) {
     e.preventDefault();
 
-    const newShow = {
-      ...formData,
-      id: crypto.randomUUID()
-    };
-
-    fetch("http://localhost:6001/shows", {
+    fetch("http://localhost:3001/shows", {
       method: "POST",
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify(newShow)
+      body: JSON.stringify(formData),
     })
-      .then((res) => res.json())
-      .then((data) => {
-        onAddShow(data);
-        setFormData({ artist: "", venue: "", date: "", description: "" });
+      .then((r) => r.json())
+      .then((newShow) => {
+        onAddShow(newShow);
+        setFormData(initialFormState);
       });
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="show-form">
       <h2>Add a New Show</h2>
 
-      <label>
-        Artist:
-        <input
-          type="text"
-          name="artist"
-          value={formData.artist}
-          onChange={handleChange}
-          required
-        />
-      </label>
-
-      <label>
-        Venue:
-        <input
-          type="text"
-          name="venue"
-          value={formData.venue}
-          onChange={handleChange}
-          required
-        />
-      </label>
-
-      <label>
-        Date:
-        <input
-          type="date"
-          name="date"
-          value={formData.date}
-          onChange={handleChange}
-          required
-        />
-      </label>
-
-      <label>
-        Description:
-        <textarea
-          name="description"
-          value={formData.description}
-          onChange={handleChange}
-        />
-      </label>
+      <input
+        type="text"
+        name="artist"
+        placeholder="Artist"
+        value={formData.artist}
+        onChange={handleChange}
+      />
+      <input
+        type="text"
+        name="venue"
+        placeholder="Venue"
+        value={formData.venue}
+        onChange={handleChange}
+      />
+      <input
+        type="text"
+        name="date"
+        placeholder="Date"
+        value={formData.date}
+        onChange={handleChange}
+      />
+      <textarea
+        name="description"
+        placeholder="Description"
+        value={formData.description}
+        onChange={handleChange}
+      ></textarea>
 
       <button type="submit">Add Show</button>
     </form>
