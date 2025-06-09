@@ -1,23 +1,20 @@
-import React, { useState } from "react";
+import React from "react";
 import ShowCard from "./ShowCard";
-import Search from "./Search";
 
-function Home({ shows }) {
-  const [searchTerm, setSearchTerm] = useState("");
-
-  const filteredShows = (shows || []).filter((show) =>
-    show.artist.toLowerCase().includes(searchTerm.toLowerCase())
-  );
-
+function Home({ searchTerm, setSearchTerm, shows }) {
   return (
-    <div>
+    <div className="home">
       <h2>Gig Log</h2>
-      <Search searchTerm={searchTerm} onSearchChange={setSearchTerm} />
-      <div className="show-list">
-        {filteredShows.map((show) => (
-          <ShowCard key={show.id} show={show} />
-        ))}
-      </div>
+      <input
+        className="search-bar"
+        type="text"
+        placeholder="Search by artist..."
+        value={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value)}
+      />
+      {shows.map((show) => (
+        <ShowCard key={show.id} show={show} />
+      ))}
     </div>
   );
 }
