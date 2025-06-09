@@ -5,7 +5,7 @@ import Search from "./Search";
 function Home({ shows }) {
   const [searchTerm, setSearchTerm] = useState("");
 
-  const filteredShows = shows.filter((show) =>
+  const filteredShows = (shows || []).filter((show) =>
     show.artist.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
