@@ -21,7 +21,7 @@ function ShowForm({ onAddShow }) {
 
     const newShow = {
       ...formData,
-      id: crypto.randomUUID() 
+      id: crypto.randomUUID()
     };
 
     fetch("http://localhost:6001/shows", {
@@ -33,47 +33,57 @@ function ShowForm({ onAddShow }) {
     })
       .then((res) => res.json())
       .then((data) => {
-        onAddShow(data); 
+        onAddShow(data);
         setFormData({ artist: "", venue: "", date: "", description: "" });
       });
   }
 
   return (
-    <form onSubmit={handleSubmit} style={{ padding: "1rem" }}>
+    <form onSubmit={handleSubmit}>
       <h2>Add a New Show</h2>
-      <input
-        type="text"
-        name="artist"
-        placeholder="Artist"
-        value={formData.artist}
-        onChange={handleChange}
-        required
-      />
-      <br />
-      <input
-        type="text"
-        name="venue"
-        placeholder="Venue"
-        value={formData.venue}
-        onChange={handleChange}
-        required
-      />
-      <br />
-      <input
-        type="date"
-        name="date"
-        value={formData.date}
-        onChange={handleChange}
-        required
-      />
-      <br />
-      <textarea
-        name="description"
-        placeholder="Describe the show"
-        value={formData.description}
-        onChange={handleChange}
-      />
-      <br />
+
+      <label>
+        Artist:
+        <input
+          type="text"
+          name="artist"
+          value={formData.artist}
+          onChange={handleChange}
+          required
+        />
+      </label>
+
+      <label>
+        Venue:
+        <input
+          type="text"
+          name="venue"
+          value={formData.venue}
+          onChange={handleChange}
+          required
+        />
+      </label>
+
+      <label>
+        Date:
+        <input
+          type="date"
+          name="date"
+          value={formData.date}
+          onChange={handleChange}
+          required
+        />
+      </label>
+
+      <label>
+        Description:
+        <textarea
+          name="description"
+          value={formData.description}
+          onChange={handleChange}
+        />
+      </label>
+
       <button type="submit">Add Show</button>
     </form>
   );
