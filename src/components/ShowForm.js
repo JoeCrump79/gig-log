@@ -51,11 +51,12 @@ function ShowForm({ onAddShow }) {
         onChange={handleChange}
       />
       <input
-        type="text"
+        type="date" 
         name="date"
         placeholder="Date"
         value={formData.date}
         onChange={handleChange}
+        required
       />
       <textarea
         name="description"
