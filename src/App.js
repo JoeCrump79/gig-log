@@ -8,26 +8,43 @@ import "./App.css";
 
 function App() {
   const [shows, setShows] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
-    fetch("http://localhost:6001/shows")
+    fetch("http://localhost:3001/shows")
       .then((res) => res.json())
       .then((data) => setShows(data))
       .catch((err) => console.error("Fetch error:", err));
   }, []);
 
   function handleAddShow(newShow) {
-    setShows((prevShows) => [...prevShows, newShow]);
+    setShows((prev) => [...prev, newShow]);
   }
+
+  const filteredShows = shows.filter((show) =>
+    show.artist.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   return (
     <Router>
       <div className="App">
         <NavBar />
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/shows" element={<ShowList shows={shows} />} />
-          <Route path="/add-show" element={<ShowForm onAddShow={handleAddShow} />} />
+          <Route
+            path="/"
+            element={
+              <Home
+                searchTerm={searchTerm}
+                setSearchTerm={setSearchTerm}
+                shows={filteredShows}
+              />
+            }
+          />
+          <Route path="/shows" element={<ShowList shows={filteredShows} />} />
+          <Route
+            path="/add-show"
+            element={<ShowForm onAddShow={handleAddShow} />}
+          />
         </Routes>
       </div>
     </Router>
