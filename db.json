@@ -1,18 +1,67 @@
 {
   "shows": [
     {
-      "id": 1,
+      "id": "1",
       "artist": "Radiohead",
       "venue": "Toyota Center",
       "date": "2022-06-01",
       "description": "Best concert ever"
     },
     {
-      "id": 2,
+      "id": "2",
       "artist": "Phoebe Bridgers",
       "venue": "White Oak Music Hall",
       "date": "2023-04-19",
       "description": "Emotional and amazing"
+    },
+    {
+      "id": "0ac13703-6bbd-4c24-ae1a-3a2589db8fbd",
+      "artist": "weezer",
+      "venue": "toyota center",
+      "date": "2024-11-05",
+      "description": "kller show!\n"
+    },
+    {
+      "id": "7974",
+      "artist": "phish",
+      "venue": "red rocks",
+      "date": "2025-04-09",
+      "description": "killer show"
+    },
+    {
+      "id": "2d7b",
+      "artist": "NIN",
+      "venue": "red rocks",
+      "date": "2025-01-10",
+      "description": "nice"
+    },
+    {
+      "id": "9814",
+      "artist": "phish",
+      "venue": "toyota center",
+      "date": "2025-03-19",
+      "description": "cool"
+    },
+    {
+      "id": "c142",
+      "artist": "NIN",
+      "venue": "toyota center",
+      "date": "2025-06-20",
+      "description": "frfr"
+    },
+    {
+      "id": "7b83",
+      "artist": "stroke 9",
+      "venue": "red rockds ",
+      "date": "2025-02-05",
+      "description": "boring show"
+    },
+    {
+      "id": "6a89",
+      "artist": "weezer",
+      "venue": "toyota center",
+      "date": "2025-06-19",
+      "description": "erdf"
     }
   ]
 }
